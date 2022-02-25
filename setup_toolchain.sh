@@ -38,12 +38,12 @@ cd "$dir"
 
 for f in bin/*
 do
-    bin/patchelf --set-interpreter "$dir/lib/ld-linux-x86-64.so.2" --set-rpath '$ORIGIN/../lib' "$f" &> /dev/null || true
+    bin/patchelf --set-interpreter "$dir/lib/ld-linux-aarch64.so.1" --set-rpath '$ORIGIN/../lib' "$f" &> /dev/null || true
 done
 
 for f in cc1 cc1plus collect2 g++-mapper-server lto1 lto-wrapper
 do
-    bin/patchelf --set-interpreter "$dir/lib/ld-linux-x86-64.so.2" --set-rpath '$ORIGIN/../../..' "lib/gcc/x86_64-linux-gnu/11/$f" &> /dev/null || true
+    bin/patchelf --set-interpreter "$dir/lib/ld-linux-aarch64.so.1" --set-rpath '$ORIGIN/../../..' "lib/gcc/aarch64-linux-gnu/11/$f" &> /dev/null || true
 done
 
 if ! bin/gcc test/a.c -o test/a; then

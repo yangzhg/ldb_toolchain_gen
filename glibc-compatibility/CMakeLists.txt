@@ -4,6 +4,7 @@ project(glibc-compatibility)
 
 enable_language(ASM)
 include(CheckIncludeFile)
+
 check_include_file("sys/random.h" HAVE_SYS_RANDOM_H)
 
 macro(add_glob cur_list)
@@ -21,8 +22,8 @@ add_headers_and_sources(glibc_compatibility musl)
 add_headers_and_sources(glibc_compatibility memcpy)
 set_source_files_properties(memcpy/memcpy.c PROPERTIES COMPILE_FLAGS "-fno-builtin-memcpy")
 
-list (APPEND glibc_compatibility_sources musl/x86_64/syscall.s musl/x86_64/longjmp.s)
-set (musl_arch_include_dir musl/x86_64)
+list (APPEND glibc_compatibility_sources musl/aarch64/syscall.s musl/aarch64/longjmp.s)
+set (musl_arch_include_dir musl/aarch64)
 
 list(REMOVE_ITEM glibc_compatibility_sources musl/getentropy.c)
 if(HAVE_SYS_RANDOM_H)

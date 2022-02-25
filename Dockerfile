@@ -87,9 +87,9 @@ COPY --from=glibc /opt/libc6_2.27-3ubuntu1.5_amd64.deb /opt/
 
 RUN dpkg -i /opt/libc6_2.27-3ubuntu1.5_amd64.deb
 
-RUN wget https://github.com/Kitware/CMake/releases/download/v3.22.1/cmake-3.22.1-linux-x86_64.tar.gz -O /opt/cmake-3.22.1-linux-x86_64.tar.gz
+RUN wget https://github.com/Kitware/CMake/releases/download/v3.22.1/cmake-3.22.1-linux-aarch64.tar.gz -O /opt/cmake-3.22.1-linux-aarch64.tar.gz
 
-RUN wget https://github.com/NixOS/patchelf/releases/download/0.14.3/patchelf-0.14.3-x86_64.tar.gz -O /opt/patchelf-0.14.3-x86_64.tar.gz
+RUN wget https://github.com/NixOS/patchelf/releases/download/0.14.3/patchelf-0.14.3-aarch64.tar.gz -O /opt/patchelf-0.14.3-aarch64.tar.gz
 
 RUN pip3 install setuptools
 
@@ -105,9 +105,9 @@ RUN wget https://ftp.gnu.org/gnu/bison/bison-3.5.1.tar.gz -O /opt/bison-3.5.1.ta
     cd .. && \
     rm -rf bison-3.5.1 bison-3.5.1.tar.gz
 
-RUN exodus /usr/bin/addr2line /usr/bin/python3 /usr/bin/curl /usr/bin/gdb /usr/bin/lldb-argdumper-${LLVM_VERSION} /usr/bin/lldb-instr-${LLVM_VERSION} /usr/bin/lldb-server-${LLVM_VERSION} /usr/bin/lldb-vscode-${LLVM_VERSION} /usr/bin/lldb-${LLVM_VERSION} /usr/bin/clangd-${LLVM_VERSION} /usr/bin/clang-tidy-${LLVM_VERSION} /usr/bin/clang-format-${LLVM_VERSION} /usr/bin/m4 /usr/bin/bison /usr/bin/yacc /usr/bin/flex /usr/bin/pkg-config /usr/bin/as /usr/bin/ld.bfd /usr/bin/clang-cpp-${LLVM_VERSION} /usr/bin/x86_64-linux-gnu-cpp-11 /usr/bin/gcc-ranlib-11 /usr/bin/g++-11 /usr/bin/gcc-ar-11 /usr/bin/gcc-nm-11 /usr/bin/gcc-11 /usr/bin/llvm-objdump-${LLVM_VERSION} /usr/bin/llvm-objcopy-${LLVM_VERSION} /usr/bin/llvm-ranlib-${LLVM_VERSION} /usr/bin/llvm-ar-${LLVM_VERSION} /usr/bin/llvm-nm-${LLVM_VERSION} /usr/bin/clang-${LLVM_VERSION} /usr/bin/lld-${LLVM_VERSION} /usr/bin/ninja /usr/lib/gcc/x86_64-linux-gnu/11/lto1 /usr/lib/gcc/x86_64-linux-gnu/11/lto-wrapper /usr/lib/gcc/x86_64-linux-gnu/11/g++-mapper-server /usr/lib/gcc/x86_64-linux-gnu/11/cc1 /usr/lib/gcc/x86_64-linux-gnu/11/cc1plus /usr/lib/gcc/x86_64-linux-gnu/11/collect2 | bash
+RUN exodus /usr/bin/addr2line /usr/bin/python3 /usr/bin/curl /usr/bin/gdb /usr/bin/lldb-argdumper-${LLVM_VERSION} /usr/bin/lldb-instr-${LLVM_VERSION} /usr/bin/lldb-server-${LLVM_VERSION} /usr/bin/lldb-vscode-${LLVM_VERSION} /usr/bin/lldb-${LLVM_VERSION} /usr/bin/clangd-${LLVM_VERSION} /usr/bin/clang-tidy-${LLVM_VERSION} /usr/bin/clang-format-${LLVM_VERSION} /usr/bin/m4 /usr/bin/bison /usr/bin/yacc /usr/bin/flex /usr/bin/pkg-config /usr/bin/as /usr/bin/ld.bfd /usr/bin/clang-cpp-${LLVM_VERSION} /usr/bin/aarch64-linux-gnu-cpp-11 /usr/bin/gcc-ranlib-11 /usr/bin/g++-11 /usr/bin/gcc-ar-11 /usr/bin/gcc-nm-11 /usr/bin/gcc-11 /usr/bin/llvm-objdump-${LLVM_VERSION} /usr/bin/llvm-objcopy-${LLVM_VERSION} /usr/bin/llvm-ranlib-${LLVM_VERSION} /usr/bin/llvm-ar-${LLVM_VERSION} /usr/bin/llvm-nm-${LLVM_VERSION} /usr/bin/clang-${LLVM_VERSION} /usr/bin/lld-${LLVM_VERSION} /usr/bin/ninja /usr/lib/gcc/aarch64-linux-gnu/11/lto1 /usr/lib/gcc/aarch64-linux-gnu/11/lto-wrapper /usr/lib/gcc/aarch64-linux-gnu/11/g++-mapper-server /usr/lib/gcc/aarch64-linux-gnu/11/cc1 /usr/lib/gcc/aarch64-linux-gnu/11/cc1plus /usr/lib/gcc/aarch64-linux-gnu/11/collect2 | bash
 
-RUN cp /usr/lib/libsource-highlight.so.4 /opt/exodus/bundles/*/usr/lib/x86_64-linux-gnu/
+RUN cp /usr/lib/libsource-highlight.so.4 /opt/exodus/bundles/*/usr/lib/aarch64-linux-gnu/
 
 COPY generate_toolchain.sh setup_toolchain.sh disable_ld_preload.c /
 
